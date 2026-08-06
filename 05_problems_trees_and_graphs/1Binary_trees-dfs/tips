@@ -1,0 +1,10 @@
+In each traversal:
+In-order: You process the left child first, then the node itself, then the right child.
+Pre-order: You process the current node before its children.
+Post-order: You process the current node after its children.
+
+Time and Space Complexity:
+Time Complexity: O(n) – You visit each node exactly once.
+Space Complexity:
+O(h), where h is the height of the tree. In the worst case (unbalanced tree), it could be O(n), and in the best case
+(balanced tree), it would be O(log n) due to the depth of the recursive call stack.
