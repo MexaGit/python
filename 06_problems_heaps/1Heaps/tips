@@ -1,0 +1,16 @@
+Heaps
+A heap is a data structure that is an implementation of the priority queue.
+
+Note that a priority queue is an abstract data structure. A heap is one of many ways to implement a priority queue.
+However, people often use the two terms interchangeably. In this course, we will use the term "heap".
+
+A heap is a container that stores elements, and supports the following operations:
+    Add an element in O(log n)
+    Remove the minimum element in O(log n)
+    Find the minimum element in O(1)
+
+    A heap can also find the max elements instead of the min elements. If a heap is configured to find/remove the min
+    element, it's called a min heap. If it's configured to find/remove the max element, it's called a max heap.
+
+The ability to find the max/min element in constant time, while only needing logarithmic time to maintain this ability
+through changes makes a heap an extremely powerful data structure.
