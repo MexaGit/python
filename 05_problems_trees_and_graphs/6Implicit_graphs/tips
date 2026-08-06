@@ -1,0 +1,12 @@
+Implicit graphs
+When we first started looking at graphs, we talked about some common input formats for graphs (adjacency list,
+adjacency matrix, array of edges, matrix). The problems we have looked at so far have conformed to these input formats,
+which made it easier for us to identify that the problem should be modeled as a graph. Some problems explicitly told us
+we were dealing with a graph, while some had a story like "cities connected by roads". Regardless, the input format was
+usually a giveaway.
+
+Sometimes, a graph is more subtle. The input may look nothing like one of the formats we have talked about.
+Remember that a graph is any abstract collection of elements (nodes) connected by some abstract relationship (edges).
+If a problem involves transitioning between states, then try to think about if the states can be nodes and the
+transition criteria can be edges. Additionally, if the problem wants the shortest path or fewest operations etc.,
+it is a great candidate for BFS.

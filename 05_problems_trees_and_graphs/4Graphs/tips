@@ -1,0 +1,120 @@
+When to use BFS vs DFS?
+We mentioned earlier that in many problems, it doesn't matter if you choose preorder, inorder, or postorder DFS,
+the important thing is that you just visit all nodes. If you have a problem like this, then it doesn't matter
+if you use BFS either, because every "visit" to a node will store sufficient information irrespective of visit order.
+
+Because of this, in terms of binary tree algorithm problems, it is very rare to find a problem that using DFS
+is "better" than using BFS. However, implementing DFS is usually quicker because it requires less code, and is easier
+to implement if using recursion, so for problems where BFS/DFS doesn't matter, most people end up using DFS.
+
+In an interview, you may be asked some trivia regarding BFS vs DFS, such as their drawbacks. The main disadvantage
+of DFS is that you could end up wasting a lot of time looking for a value. Let's say that you had a huge tree,
+and you were looking for a value that is stored in the root's right child. If you do DFS prioritizing left before
+right, then you will search the entire left subtree, which could be hundreds of thousands if not millions of
+operations. Meanwhile, the node is literally one operation away from the root. The main disadvantage of BFS is that
+if the node you're searching for is near the bottom, then you will waste a lot of time searching through all the
+levels to reach the bottom.
+
+In terms of space complexity, DFS uses space linear with the height of the tree (the maximum depth), whereas BFS uses
+space linear with the level that has the most nodes. In some cases, DFS will use less space, in other cases,
+BFS will use less.
+
+Binary search trees
+A binary search tree (BST) is a type of binary tree. A BST has the following property:
+For each node, all values in its left subtree are less than the value in the node, and all values in its right subtree
+are greater than the value in the node. This property also implies that values in a BST must be unique.
+
+Trivia to know: an inorder DFS traversal prioritizing left before right on a BST will handle the nodes in sorted order.
+
+##----------------------------------------------------------------------------------------------------------------##
+##----------------------------------------------------------------------------------------------------------------##
+
+Graphs:
+A graph is any collection of nodes and connections between those nodes.
+Another term for nodes is vertices, and the connections between the nodes are called edges.
+Remember that a binary tree is a graph, it just has a lot of restrictions on it.
+The most prominent ones are that every node has at most one parent and at most two children.
+When we lift the restrictions, graphs can take many more forms.
+
+Graphs are part of our everyday lives. Without even trying too hard, you can model literally anything as a graph.
+Some examples of practical applications would be social networks like Facebook, Twitter, Instagram, and TikTok,
+the roads in cities, circuit boards, internet network traffic, crypto blockchains, models in biology,
+and so much more.
+
+Graph terminology:
+Before we dive in, you will first need to become familiar with some graph terminology.
+Edges of a node can either be directed or undirected. Directed edges mean that you can only traverse in one direction.
+If you're at node A and there is a directed edge to node B, you can move from A -> B, but once you're at B
+you can't move B -> A. In graphical representations, directed edges will be arrows between nodes. Undirected
+edges mean that you can traverse in both directions. So using the same example, you can move from A -> B and B -> A.
+In graphical representations, undirected edges will just be straight lines between nodes.
+
+In binary trees, the edges were directed. Binary trees are directed graphs. You can't access a node's parent,
+only its children. Once you move to a child, you can't move back.
+
+Another important term is connected component. A connected component of a graph is a group of nodes that are connected
+by edges. In the first and third graphs shown in the animation above, there is only one connected component.
+In the second graph, there are three connected components.
+
+In binary trees, there must only be one connected component (all nodes are reachable from the root).
+A node can have any number of edges connected to it. If we have a directed graph, it can have any number of edges
+leaving it and any number of edges entering it. The number of edges that can be used to reach the node is the
+node's indegree. The number of edges that can be used to leave the node is the node's outdegree.
+Nodes that are connected by an edge are called neighbors. So if you have a graph like A <-> B <-> C,
+A is neighbors with B, B is neighbors with A and C, and C is neighbors with B.
+
+In binary trees, all nodes except the root had an indegree of 1 (due to their parent). All nodes have an outdegree
+of 0, 1, or 2. An outdegree of 0 means that it is a leaf. Specific to trees, we used the parent/child terms instead
+of "neighbors".
+
+A graph can be either cyclic or acyclic. Cyclic means that the graph has a cycle, acyclic means that it doesn't.
+We learned what a cycle was in the linked list chapter - it's when you have a path in the edges that leads
+to visiting the same nodes infinitely.
+
+Binary trees by definition cannot have a cycle.
+
+An important thing to understand is that with linked lists and binary trees, you are literally given objects in memory
+that contain data and pointers. With graphs, the graph doesn't literally exist in memory.
+
+In fact, only the "idea" of the graph exists. The input will give you some information about it, and it's up to you to
+figure out how to represent and traverse the graph with code.
+
+Many times, the nodes of a graph will be labeled from 0 to n - 1. The problem statement may or may not explicitly state
+the input is a graph. Sometimes there might be a story, and you need to determine that the input is a graph.
+For example, "there are n cities labeled from 0 to n - 1". You can treat each city as a node and each city
+has a unique label.
+
+With binary trees, traversal was easy because at any given node, we only needed to reference node.left and node.right.
+This allowed us to focus only on the traversal (with DFS or BFS). With graphs, a node can have any number of neighbors.
+Before we start our traversal, we usually need to do some work to make sure that for any given node,
+we can immediately access all the neighbors of said node.
+
+##----------------------------------------------------------------------------------------------------------------##
+##----------------------------------------------------------------------------------------------------------------##
+
+Graphs - BFS
+Like with trees, in many graph problems, it doesn't really matter if you use DFS or BFS, and there are rarely
+scenarios where DFS performs better than BFS - people just choose DFS because it's faster/cleaner to implement,
+especially recursively. Every problem we looked at in the previous example could be solved with a BFS.
+
+But, there are some problems where using BFS is clearly better than using DFS. In trees, this was the case when we
+were concerned with tree levels. In graphs, it is mostly the case when you are asked to find the shortest path.
+
+Recall that in binary trees, BFS would visit all nodes at a depth d before visiting any node at a depth d + 1.
+BFS visited the nodes according to their distance from the root.
+
+99% of the time, a graph will not have a tree structure. But even then, the same logic still applies.
+Imagine whatever node you start from as a "root". Then, the neighbors of the root represent the next level,
+and the neighbors of those nodes represent the level after that.
+
+BFS on a graph always visits nodes according to their distance from the starting point. This is the key idea
+behind BFS on graphs - every time you visit a node, you must have reached it in the minimum steps possible
+from wherever you started your BFS.
+
+The above statement was always the case on binary trees, even if you did a DFS, because there is only one possible
+path to any node from the root. In a graph, there could be many paths from a given starting point to any other node.
+Using BFS will ensure that out of all possible paths, you take the shortest one.
+
+We implemented DFS primarily with recursion, which uses a stack under the hood. To implement BFS, we will use a
+queue (iteratively) instead.
+
