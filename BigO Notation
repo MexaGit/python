@@ -1,0 +1,46 @@
+1. Time Complexity:
+Time complexity is a measure of the amount of time an algorithm takes to complete based on the size of the
+input. It helps estimate how the algorithm's performance will scale as the input size grows.
+
+Example: Let's say you want to find a name in a list of names.
+If the list has 10 names, and you look through each one, it will take about 10 steps.
+If the list has 100 names, it will take about 100 steps.
+The goal is to understand how the number of steps (time) increases as the size of the input (list of names)
+grows.
+--------------------------------------------------------------------------
+2. Space Complexity:
+Space complexity refers to how much extra memory (space) an algorithm needs as the input size increases.
+This includes memory for variables, data structures, etc.
+
+Example: If an algorithm creates an extra list to store the results, the space complexity depends on how big
+that list will grow as input increases
+--------------------------------------------------------------------------
+3. Big O Notation:
+Big O notation is a way to describe the time or space complexity of an algorithm in a simplified manner.
+It focuses on the worst-case scenario and gives an idea of the algorithm’s efficiency.
+--------------------------------------------------------------------------
+Common Big O Terms:
+
+O(1) – Constant time: The time does not change with input size.
+Example: Accessing an element in a list by index.
+
+O(n) – Linear time: The time increases directly with the input size.
+Example: Searching through an unsorted list.
+
+O(n²) – Quadratic time: The time increases with the square of the input size.
+Example: Comparing all pairs in a list.
+
+O(log n) – Logarithmic time: The time grows slower as the input size increases.
+Example: Binary search in a sorted list.
+
+Simplified Example of Time Complexity:
+O(1): You have a box. Opening the box takes the same amount of time, no matter how many items are inside.
+O(n): You have a row of boxes. You open each one, so the more boxes there are, the longer it takes.
+O(n²): You have rows of boxes, and you need to check every pair of boxes. The time grows quickly as the
+number of boxes increases.
+
+Simplified Example of Space Complexity:
+O(1): You store one extra item regardless of how many items you are processing.
+O(n): You need an extra list that grows as big as your input list.
+Understanding Big O, time complexity, and space complexity helps you choose efficient
+--------------------------------------------------------------------------
